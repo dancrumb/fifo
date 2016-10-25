@@ -1,5 +1,5 @@
 {
-  "name": "jsfbp",
+  "name": "event-emitting-fifo",
   "version": "1.0.0",
   "description": "Event-emitting FIFO queue",
   "repository": {
