@@ -13,18 +13,24 @@ class FIFO extends EventEmitter {
   }
 
   /**
+   * @property {number} Number of items currently in the FIFO queue
+   */
+  get length () {
+    return this.queue.length
+  }
+
+  /**
    * Enqueue a value to the FIFO
    *
    * @param {*} value A value to be enqueue to the FIFO
-   * @fires FIFO#fifoValueAdded
-   * @fires FIFO#fifoNoLongerEmpty
+   * @fires FIFO#valueAdded
+   * @fires FIFO#noLongerEmpty
    */
   enqueue(value) {
     this.queue.push(value);
-    this.length += 1;
-    this.emit('fifoValueAdded');
+    this.emit('valueAdded');
     if (this.length === 1) {
-      this.emit('fifoNoLongerEmpty');
+      this.emit('noLongerEmpty');
     }
   }
 
@@ -32,24 +38,18 @@ class FIFO extends EventEmitter {
    * Dequeues a value from the FIFO
    *
    * @returns {*}
-   * @fires FIFO#fifoValueRemoved
-   * @fires FIFO#fifoEmpty
+   * @fires FIFO#valueRemoved
+   * @fires FIFO#empty
    */
   dequeue() {
     if (this.isEmpty()) {
       return null;
     }
-    const value = this.queue[this.cursor];
-    this.cursor += 1;
-    this.length -= 1;
-    if (this.cursor > this.queue.length / 2) {
-      this.queue = this.queue.slice(this.cursor);
-      this.length = this.queue.length;
-      this.cursor = 0;
-    }
-    this.emit('fifoValueRemoved');
+    const value = this.queue.shift();
+
+    this.emit('valueRemoved');
     if (this.isEmpty()) {
-      this.emit('fifoEmpty');
+      this.emit('empty');
     }
 
     return value;
@@ -65,17 +65,12 @@ class FIFO extends EventEmitter {
 
   /**
    * Clears the FIFO and prepares it for use
-   * @fires FIFO#fifoEmpty
+   * @fires FIFO#empty
    */
   reset(data) {
-    this.cursor = 0;
     this.queue = data || [];
-    /**
-     * @property {number} Number of items currently in the FIFO queue
-     */
-    this.length = this.queue.length;
     if (this.length === 0) {
-      this.emit('fifoEmpty');
+      this.emit('empty');
     }
   }
 }
@@ -83,26 +78,25 @@ class FIFO extends EventEmitter {
 /**
  * Fired whenever the FIFO drops to empty
  *
- * @event FIFO#fifoEmpty
+ * @event FIFO#empty
  */
 
 /**
  * Fired when a value is added to an empty FIFO
  *
- * @event FIFO#fifoNoLongerEmpty
+ * @event FIFO#noLongerEmpty
  */
-
 
 /**
  * Fired whenever a value is added to the FIFO
  *
- * @event FIFO#fifoValueAdded
+ * @event FIFO#valueAdded
  */
 
 /**
  * Fired whenever a value is removed from the FIFO
  *
- * @event FIFO#fifoValueRemoved
+ * @event FIFO#valueRemoved
  */
 
 
