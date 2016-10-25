@@ -70,6 +70,9 @@ class FIFO extends EventEmitter {
   reset(data) {
     this.cursor = 0;
     this.queue = data || [];
+    /**
+     * @property {number} Number of items currently in the FIFO queue
+     */
     this.length = this.queue.length;
     if (this.length === 0) {
       this.emit('fifoEmpty');
