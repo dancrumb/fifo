@@ -1,31 +1,23 @@
 {
   "name": "jsfbp",
-  "version": "2.0.1",
-  "description": "FBP implementation written using node-fibers ",
+  "version": "1.0.0",
+  "description": "Event-emitting FIFO queue",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jpaulm/jsfbp.git"
+    "url": "git+https://github.com/dancrumb/fifo"
   },
   "engines": {
     "node": ">= 0.12.7"
   },
   "keywords": [
-    "fbp",
-    "flow-based-programming",
-    "node-fibers"
+    "fifo","events"
   ],
-  "contributors": [
-    "Dan Rumney <dancrumb@gmail.com>"
-  ],
+  "author": "Dan Rumney <dancrumb@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jpaulm/jsfbp/issues"
+    "url": "https://github.com/dancrumb/fifo/issues"
   },
-  "homepage": "https://github.com/jpaulm/jsfbp",
-  "dependencies": {
-    "lodash": "^4.13.1",
-    "synchronize": "^2.0.0"
-  },
+  "homepage": "https://github.com/dancrumb/fifo",
   "main": "lib/FIFO.js",
   "devDependencies": {
     "babel-cli": "^6.16.0",
