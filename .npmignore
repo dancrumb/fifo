@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Node template
+node_modules/
+test/
+examples/
+src/
+.idea/
+
+.travis.yml
+.codeclimate.yml
+.eslintrc
+.babelrc
+.eslintignore
+.gitignore
+.istanbul.yml
+.jsbeautifyrc
+.project
