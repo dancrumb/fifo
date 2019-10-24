@@ -29,7 +29,7 @@
     "benchmark": "^2.1.1",
     "chai": "^3.5.0",
     "docdash": "^0.4.0",
-    "eslint": "^2.10.2",
+    "eslint": "^6.5.1",
     "eslint-config-defaults": "^9.0.0",
     "eslint-config-es2015": "^1.1.0",
     "eslint-plugin-chai-expect": "^1.1.1",
